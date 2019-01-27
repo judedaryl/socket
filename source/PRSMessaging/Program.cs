@@ -22,8 +22,8 @@ namespace PRSMessaging
             var port = Environment.GetEnvironmentVariable("PRS_MESS_PORT");
             if (string.IsNullOrWhiteSpace(port)) port = "5002";
             return WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .UseUrls($"https://localhost:{port}");
+            .UseStartup<Startup>();
+            //.UseUrls($"https://localhost:{port}");
         }
     }
 }

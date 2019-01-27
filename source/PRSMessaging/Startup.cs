@@ -30,15 +30,7 @@ namespace PRSMessaging
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.WithOrigins("http://localhost:4200")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
-                        services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicies",
-                    builder => builder.WithOrigins("https://localhost:5001")
+                    builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials());
@@ -63,7 +55,6 @@ namespace PRSMessaging
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
-            app.UseCors("CorsPolicies");
             app.UseSignalR(routes =>
             {
                 routes.MapHub<MessagingHub>("");
